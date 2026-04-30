@@ -46,15 +46,15 @@ public class Calculadora {
         this.result = result;
     }
 
-    protected double soma(){
+    private double soma(){
         return num + num2;
     }
-    protected double multiplicar(){
+    private double multiplicar(){
         return num * num2;
     }
-    protected double dividir(){
+    private double dividir(){
         try{
-            if(Double.isNaN(num / num2)){
+            if(num2 == 0){
                 throw new ArithmeticException("Não pode dividir por zero.");
             }
             return num / num2;
@@ -63,10 +63,7 @@ public class Calculadora {
         }
         return -1;
     }
-    protected double diminuir(){
-        if(num < 0 && num2 < 0){
-           return num + num2;
-        }
+    private double diminuir(){
         return num - num2;
     }
 
@@ -75,10 +72,26 @@ public class Calculadora {
         String msg;
 
         switch (operation){
-            case '*' -> msg = "A multiplicação resultou em : " + this.multiplicar();
-            case '-' -> msg = "A subtração resultou em : " +this.diminuir();
-            case '/' -> msg = "A divisão resultou em : " +this.dividir();
-            case '+' -> msg = "A soma resultou em : " +this.soma();
+            case '*' -> {
+                double result = this.multiplicar();
+                this.setResult(result);
+                msg = "A multiplicação resultou em : " + this.getResult();
+            }
+            case '-' -> {
+                double result = this.diminuir();
+                this.setResult(result);
+                msg = "A subtração resultou em : " + this.getResult();
+            }
+            case '/' -> {
+                double result = this.dividir();
+                this.setResult(result);
+                msg = "A divisão resultou em : " + this.getResult();
+            }
+            case '+' -> {
+                double result = this.soma();
+                this.setResult(result);
+                msg = "A soma resultou em : " + this.getResult();
+            }
             default -> throw new IllegalArgumentException("Caractere inválido tente outro.");
         }
 

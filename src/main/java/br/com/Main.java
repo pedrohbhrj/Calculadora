@@ -4,7 +4,6 @@ package br.com;
 
 
 import br.com.calculadora.Calculadora;
-import br.com.calculadora.Calculo;
 
 import java.time.LocalDateTime;
 import java.util.Scanner;
@@ -34,9 +33,7 @@ public class Main {
             Calculadora calculadora = new Calculadora(numerador,denominador,operation);
 
             try{
-                Calculo calculo = new Calculo(calculadora);
-                System.out.println(calculo.calcular(operation));
-                System.out.println("Se deseja finalizar o programa digite F para finalizar ou apenas de enter para calcular novamente.");
+                System.out.println(calculadora.calcular(operation));
                 String continuar = sc.next();
                 if(continuar.equals("F")){
                     break;
