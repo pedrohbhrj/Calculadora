@@ -64,6 +64,9 @@ public class Calculadora {
         return -1;
     }
     protected double diminuir(){
+        if(num < 0 && num2 < 0){
+           return num + num2;
+        }
         return num - num2;
     }
 
